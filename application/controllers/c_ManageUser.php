@@ -21,7 +21,7 @@ class ManageUser extends CI_Controller {
 		$noTelp=$this->security->sanitize_fielname($_POST['telp']);
 		$NIK=$this->security->sanitize_fielname($_POST['NIK']);
 		if($this->form_validation->run()==FALSE){
-			$this->session->set_flashdata();
+			$this->session->set_flashdata('error', "Maaf, gagal menambahkan user");
 		} else {
 			$this->m_user->addUser($username, $password, $email, $noTelp, $NIK);
 		}
