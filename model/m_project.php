@@ -7,6 +7,7 @@ class m_project extends CI_Model {
 	}
 
 	public function addVote($id){
+		//masih butuh penyesuaian di sini
 		$value=$this->db->query("SELECT Satisfaction FROM Project where ID_Project='$id'");
 		$value += 1;
 		$this->db->query("UPDATE Project SET Satisfaction=$value where='$id'");
