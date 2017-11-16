@@ -23,7 +23,7 @@ class auhtorize extends CI_Controller {
 
 	public function logout(){
 		$this->session->unset_userdata('user');
-		$this->session->set_flashdata('sukses', 'Terimakasih Telah Menggunakan Aplikasi Sipudes');
+		$this->session->set_flashdata('sukses', 'Terimakasih Telah Menggunakan Sistem Informasi Ini');
 		redirect('login');
 	}
 
