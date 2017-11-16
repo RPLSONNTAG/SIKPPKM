@@ -11,28 +11,15 @@ class ManageUser extends CI_Controller {
 	public function addUser(){
 		$username=$this->security->sanitize_filename($_POST['username']);
 		$password=$this->security->sanitize_filename($_POST['password']);
-		$name=$this->security->sanitize_filename($_POST['name']);
-		$work=$this->m_admin->addAdmin();
-		if($isValid){
-			$this->session->set_userdata('user', $username);
-		} else {
-			$this->session->set_flashdata('error','Maaf Anda Gagal Login ');
-			redirect('Welcome');
-		}
+		$email=$this->security->sanitize_fielname($_POST['email']);
+		$noTelp=$this->security->sanitize_fielname($_POST['telp']);
+		$NIK=$this->security->sanitize_fielname($_POST['NIK']);
+		$work=$this->m_user->addUser($username, $password, $email, $noTelp, $NIK);
 	}
 
-	public function logout(){
-		$this->session->unset_userdata('user');
-		$this->session->set_flashdata('sukses', 'Terimakasih Telah Menggunakan Aplikasi Sipudes');
-		redirect('Login');
-	}
-
-	public function register(){
-		
-	}
-
-	public function resetPassword(){
-		
+	public function delUser(){
+		$username=$this->security->sanitize_filename($_POST['username']);
+		$work=$this->m_user->delUser($username);
 	}
 
 }
