@@ -15,14 +15,14 @@ class m_admin extends CI_Model {
 		}
 	}
 
-	public function addAdmin(){
-
+	public function addAdmin($id, $nama, $password){
+		$query=$this->db->query("INSERT INTO Admin values('$id','$nama','$password')");
 	}
 	public function editAdmin(){
-
+		$query=$this->db->query("UPDATE TABLE Admin SET where");
 	}
-	public function delAdmin(){
-
+	public function delAdmin($id){
+		$query=$this->db->query("DELETE FROM Admin where ID='$isValid'");
 	}
 }
 
