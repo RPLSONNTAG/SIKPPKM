@@ -22,7 +22,7 @@ class m_admin extends CI_Model {
 		$query=$this->db->query("UPDATE TABLE Admin SET where");
 	}
 	public function delAdmin($id){
-		$query=$this->db->query("DELETE FROM Admin where ID='$isValid'");
+		$query=$this->db->query("DELETE FROM Admin where ID='$id'");
 	}
 }
 
