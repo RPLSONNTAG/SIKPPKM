@@ -5,7 +5,7 @@ class ManageUser extends CI_Controller {
 	public function __construct(){
 		parent::__construct();
 		in_access();
-		$this->load->model('m_admin');
+		$this->load->model('m_user');
 	}
 
 	public function addUser(){
