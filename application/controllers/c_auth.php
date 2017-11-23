@@ -32,7 +32,16 @@ class auhtorize extends CI_Controller {
 	}
 
 	public function resetPassword(){
-
+		$this->form_validation->set_rules('username', 'username', 'required');
+		$this->form_validation->set_rules('password', 'password', 'required');
+		
+		$username=$this->security->sasnitize_filename($_POST['username']);
+		$password=$this->security->sasnitize_filename($_POST['password']);
+		if($this->form_validation->run()==FALSE){
+			$this->session->set_flashdata('error', "Maaf, data gagal diterima");
+		} else {
+			$this->db->query("UPDATE TABLE User set Password='$password' where username='$username'");
+		}
 	}
 
 }
