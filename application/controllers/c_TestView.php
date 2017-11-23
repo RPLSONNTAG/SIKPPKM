@@ -37,4 +37,49 @@ class c_TestView extends CI_Controller {
 	{
 		$this->load->view('admin-input_project.html');
 	}
+
+	public function f5_admin()
+	{
+		$this->load->view('admin-list_prioritas.html');
+	}
+
+	public function f6_admin()
+	{
+		$this->load->view('admin-list_kepuasan.html');
+	}
+
+	public function f7_admin()
+	{
+		$this->load->view('admin-list_report.html');
+	}
+
+	public function f8_admin()
+	{
+		$this->load->view('admin-list_usulan.html');
+	}
+
+	public function f9_admin()
+	{
+		$this->load->view('admin-list_kependudukan.html');
+	}
+
+	public function f10_admin()
+	{
+		$this->load->view('admin-input_kependudukan.html');
+	}
+
+	public function f11_admin()
+	{
+		$this->load->view('admin-halaman_project.html');
+	}
+
+	public function f12_admin()
+	{
+		$this->load->view('admin-halaman_report.html');
+	}
+
+	public function f13_admin()
+	{
+		$this->load->view('admin-halaman_usulan.html');
+	}
 }
