@@ -1,30 +1,49 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class auhtorize extends CI_Controller {
+class c_auth extends CI_Controller {
 
 	public function __construct(){
 		parent::__construct();
-		in_access();
 		$this->load->model('m_admin');
+		$this->load->model('m_user');
 	}
 
-	public function login(){
-		$username=$this->security->sanitize_filename($_POST['username']);
-		$password=$this->security->sanitize_filename($_POST['password']);
-		$status=$this->m_admin->isValid($username, $password);
-		if($status){
-			$this->session->set_userdata('user', $username);
-			redirect('Welcome');
+	public function index(){
+		$this->load->view('admin-login.php');
+	}
+
+	public function loginAdmin(){
+		$username=$this->input->post('username');
+		$password=$this->input->post('password');
+		if($this->m_admin->isValid($username, $password)){
+			//echo "Berhasil!";
+			$this->session->set_userdata('admin', $username);
+			$this->load->view('/admin/admin-home');
 		} else {
+			//echo "Username Salah";
 			$this->session->set_flashdata('error','Maaf Anda Gagal Login ');
-			redirect('Login');
+			redirect('c_auth');
+		}
+	}
+
+	public function loginUser(){
+		$username=$this->input->post('username');
+		$password=$this->input->post('password');
+		if($this->m_user->isValid($username, $password)){
+			//echo "Berhasil!";
+			$this->session->set_userdata('user', $username);
+			$this->load->view('/user/user_home');
+		} else {
+			//echo "Username Salah";
+			$this->session->set_flashdata('error','Maaf Anda Gagal Login ');
+			$this->load->view('welcome_message');
 		}
 	}
 
 	public function logout(){
 		$this->session->unset_userdata('user');
-		$this->session->set_flashdata('sukses', 'Terimakasih Telah Menggunakan Sistem Informasi Ini');
-		redirect('login');
+		$this->session->set_flashdata('sukses', 'Terimakasih Telah Menggunakan Aplikasi Sipudes');
+		redirect('c_auth');
 	}
 
 	public function register(){
@@ -32,16 +51,7 @@ class auhtorize extends CI_Controller {
 	}
 
 	public function resetPassword(){
-		$this->form_validation->set_rules('username', 'username', 'required');
-		$this->form_validation->set_rules('password', 'password', 'required');
-		
-		$username=$this->security->sasnitize_filename($_POST['username']);
-		$password=$this->security->sasnitize_filename($_POST['password']);
-		if($this->form_validation->run()==FALSE){
-			$this->session->set_flashdata('error', "Maaf, data gagal diterima");
-		} else {
-			$this->db->query("UPDATE TABLE User set Password='$password' where username='$username'");
-		}
+
 	}
 
 }

@@ -6,28 +6,48 @@ class m_project extends CI_Model {
 		return $this->db->query("SELECT isi FROM Project where ID_Project='$id'");
 	}
 
-	public function addVote($id){
-		//masih butuh penyesuaian di sini
-		$value=$this->db->query("SELECT Satisfaction FROM Project where ID_Project='$id'");
-		$value += 1;
-		$this->db->query("UPDATE Project SET Satisfaction=$value where='$id'");
+	public function addSatisfaction($id){
+		//get vote
+		$this->db->select('satisfaction');
+		$this->db->where('ID_Project', $id);
+		$query = $this->db->get('project');
+		$tmp = $query->result();
+		$val = $tmp[0];
+		$satisfaction = $val->satisfaction;
+		$satisfaction +=1;
+		//add vote
+		$query=$this->db->query("UPDATE project SET satisfaction=$satisfaction where ID_Project='$id'");
 	}
 
-	public function addPriority(){}
+	public function addPriority($id){
+		//get priority
+		$this->db->select('priority');
+		$this->db->where('ID_Project', $id);
+		$query = $this->db->get('project');
+		$tmp = $query->result();
+		$val = $tmp[0];
+		$priority = $val->vote;
+		$priority +=1;
+		//add priority
+		$query=$this->db->query("UPDATE project SET priority=$priority where ID_Project='$id'");
+	}
 
-	public function addKomentar($id, $komentar, $user){
-		$query=$this->db->query("INSERT INTO Komentar values('$id','$komentar','$user')");
+	public function addKomentar($id, $komentar, $username){
+		$query=$this->db->query("INSERT INTO komentar values('','$komentar','$username','$id')");
 	}
 
 	public function addReport($id, $report, $user){
-		$query=$this->db->query("INSERT INTO Report values('$id','$report','Pending','$user')");
-
+		$query=$this->db->query("INSERT INTO report values('','$report','pending','$user','$id')");
 	}
 
 	public function getProgress(){}
 	
-	public function newProject(){
-		$query=$this->db->query("INSERT INTO Project values('','','')");
+	public function newProject($id, $judul, $isi){
+		$query=$this->db->query("INSERT INTO project values('$id','$judul','$isi',0,0,0)");
+	}
+
+	public function delProject($id){
+		$query=$this->db->query("DELETE FROM project where ID_Project='$id'");
 	}
 
 }
