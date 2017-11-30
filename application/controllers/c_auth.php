@@ -12,6 +12,10 @@ class c_auth extends CI_Controller {
 		$this->load->view('admin-login.php');
 	}
 
+	public function home(){
+		$this->load->view('/admin/admin-home');
+	}
+	
 	public function loginAdmin(){
 		$username=$this->input->post('username');
 		$password=$this->input->post('password');

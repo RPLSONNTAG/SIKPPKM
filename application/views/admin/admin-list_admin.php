@@ -4,16 +4,16 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<title>Admin - List Admin</title>
-		<link href="<?php echo base_url() ?>assets/css/bootstrap.css" rel="stylesheet">
+		<link href="<?php echo base_url() ?>assets/css/bootstrap.min.css" rel="stylesheet">
     <link href="<?php echo base_url() ?>assets/css/master.css" rel="stylesheet">
 		<script src="<?php echo base_url() ?>assets/js/jquery.min.js"></script>
-		<script src="<?php echo base_url() ?>assets/js/bootstrap.min.js"></script>
+		<script src="<?php echo base_url() ?>assets/js/bootstrap.bundle.min.js"></script>
   </head>
   <body>
     <!--navbar-->
 		<nav class="navbar navbar-default">
     <div class="container-fluid">
-      <div class="navbar-header"><a href="#" class="navbar-brand navbar-link">SIKPPKM</a>
+      <div class="navbar-header"><a href="<?php echo site_url('c_auth/home') ?>" class="navbar-brand navbar-link">SIKPPKM</a>
         <button data-toggle="collapse" data-target="#navcol-1" class="navbar-toggle collapsed"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
       </div>
       <ul class="nav navbar-nav navbar-right">

@@ -46,6 +46,9 @@ class c_ManageProject extends CI_Controller {
 		$this->m_project->addReport($id, $report, $username);
 	}
 
+	public function viewAddProject(){
+		$this->load->view('/admin/admin-input_project');
+	}
 	public function addProject(){
 		$id=$this->input->post('id_project');
 		$judul=$this->input->post('judul');

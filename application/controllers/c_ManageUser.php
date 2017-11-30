@@ -9,8 +9,11 @@ class c_ManageUser extends CI_Controller {
 	}
 
 	public function index(){
-		//$data['admin'] = $this->getAllAdmin()->result();
-		//$this->load->view('/admin/admin-list_admin', $data);
+		$data['admin'] = $this->getAllAdmin()->result();
+		$this->load->view('/admin/admin-list_admin', $data);
+	}
+
+	public function viewAllUser(){
 		$this->getAllUser();
 	}
 
@@ -21,6 +24,10 @@ class c_ManageUser extends CI_Controller {
 	public function getAllUser(){
 		$data['user'] = $this->db->get('user')->result();
 		$this->load->view('/admin/admin-list_kependudukan', $data);
+	}
+
+	public function viewAddAdmin(){
+		$this->load->view('/admin/admin-input_admin');
 	}
 
 	public function addAdmin(){
