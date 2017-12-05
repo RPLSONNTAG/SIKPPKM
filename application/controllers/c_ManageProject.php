@@ -78,6 +78,17 @@ class c_ManageProject extends CI_Controller {
 		redirect('c_ManageProject');
 	}
 
+	public function berjalan(){
+		$this->load->view('/user/user-projectberjalan');
+	}
+
+	public function projectSelesai(){
+		$this->load->view('/user/user-projectselesai');
+	}
+
+	public function halamanProject(){
+		$this->load->view('/user/user-halamanproject');
+	}
 }
 /* End of file c_ManageProject.php */
 /* Location: ./application/controllers/c_ManageProject.php */

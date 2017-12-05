@@ -16,6 +16,14 @@ class c_auth extends CI_Controller {
 		$this->load->view('/admin/admin-home');
 	}
 	
+	public function uHome(){
+		$this->load->view('/user/user-profile');
+	}
+
+	public function viewLogUser(){
+		$this->load->view('/user/user-login');
+	}
+
 	public function loginAdmin(){
 		$username=$this->input->post('username');
 		$password=$this->input->post('password');
@@ -36,15 +44,17 @@ class c_auth extends CI_Controller {
 		if($this->m_user->isValid($username, $password)){
 			//echo "Berhasil!";
 			$this->session->set_userdata('user', $username);
-			$this->load->view('/user/user_home');
+			echo "<script>alert('Sukses!')</script>";
+			$this->load->view('/user/user-profile');
 		} else {
 			//echo "Username Salah";
 			$this->session->set_flashdata('error','Maaf Anda Gagal Login ');
-			$this->load->view('welcome_message');
+			redirect('c_auth');
 		}
 	}
 
 	public function logout(){
+		$this->session->unset_userdata('admin');
 		$this->session->unset_userdata('user');
 		$this->session->set_flashdata('sukses', 'Terimakasih Telah Menggunakan Aplikasi Sipudes');
 		redirect('c_auth');
@@ -54,8 +64,28 @@ class c_auth extends CI_Controller {
 
 	}
 
-	public function resetPassword(){
+	public function viewGPassword(){
+		$this->load->view('user/user-gantipassword');
+	}
 
+	public function gantiPassword(){
+		$username=$this->session->userdata('user');
+		$passLama=$this->input->post('password-lama');
+		$passBaru1=$this->input->post('password-baru1');
+		$passBaru2=$this->input->post('password-baru2');
+		if($this->m_user->validPass($username, $passLama)){
+			if($passBaru1 != $passBaru2){
+				echo "<script>alert('Password baru tidak sama!')</script>";
+				$this->viewGPassword();
+			} else {
+				$this->m_user->setPassword($username, $passBaru1);
+				echo "<script>alert('Password Berhasil Diganti!')</script>";
+				$this->uHome();
+			}
+		} else {
+			echo "<script>alert('Password Salah!')</script>";
+			$this->viewGPassword();
+		}
 	}
 
 }

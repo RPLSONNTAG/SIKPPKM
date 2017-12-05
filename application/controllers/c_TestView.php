@@ -85,51 +85,51 @@ class c_TestView extends CI_Controller {
 
 	public function user_profile()
 	{
-		$this->load->view('user-profile.html');
+		$this->load->view('/user/user-profile');
 	}
 
 	public function user_report()
 	{
-		$this->load->view('user-reportprogress.html');
+		$this->load->view('user/user-reportprogress');
 	}
 
 	public function user_gantipassword()
 	{
-		$this->load->view('user-gantipassword.html');
+		$this->load->view('/user/user-gantipassword');
 	}
 
 	public function user_halamanproject()
 	{
-		$this->load->view('user-halamanproject.html');
+		$this->load->view('/user/user-halamanproject');
 	}
 
 	public function user_listusulan()
 	{
-		$this->load->view('user-listusulan.html');
+		$this->load->view('/user/user-listusulan');
 	}
 
 	public function user_login()
 	{
-		$this->load->view('user-login.html');
+		$this->load->view('/user/user-login');
 	}
 
 	public function user_projectberjalan()
 	{
-		$this->load->view('user-projectberjalan.html');
+		$this->load->view('/user/user-projectberjalan');
 	}
 
 	public function user_projectselesai()
 	{
-		$this->load->view('user-projectselesai.html');
+		$this->load->view('/user/user-projectselesai');
 	}
 
 	public function user_register()
 	{
-		$this->load->view('user-register.html');
+		$this->load->view('/user/user-register');
 	}
 
 	public function user_usulanproject()
 	{
-		$this->load->view('user-usulanproject.html');
+		$this->load->view('/user/user-usulanproject');
 	}
 }

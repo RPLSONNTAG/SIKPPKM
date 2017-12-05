@@ -7,8 +7,19 @@ class m_user extends CI_Model {
 	}
 
 	public function isValid($username, $password){
-		$this->$username = $this->input->post('username');
-		$this->$password = $this->input->post('password');
+		$where = array(
+						'username' => $username,
+						'password' => $password
+				 	  );
+		$dataR = $this->db->get_where('user', $where)->num_rows();
+		if($dataR>0){
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+	public function validPass($username, $password){
 		$where = array(
 						'username' => $username,
 						'password' => $password
@@ -22,7 +33,7 @@ class m_user extends CI_Model {
 	}
 
 	public function setPassword($username ,$password){
-		$query=$this->db->query("UPDATE TABLE user SET password=$password where username='$username'");
+		$query=$this->db->query("UPDATE user SET password='$password' where username='$username'");
 	}
 
 	public function getUsername($id){

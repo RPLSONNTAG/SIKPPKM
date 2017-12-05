@@ -58,10 +58,10 @@
                 <ul class="list-group">
                   <li class="list-group-item"><a href="<?php echo site_url('c_ManageProject') ?>">List Project</a></li>
                   <li class="list-group-item"><a href="<?php echo site_url('c_ManageProject/viewAddProject') ?>">Input Project</a></li>
-                  <li class="list-group-item"><a href="f5_admin">List Prioritas Project</a></li>
-                  <li class="list-group-item"><a href="f6_admin">List Kepuasan Project</a></li>
-                  <li class="list-group-item"><a href="f7_admin">List Report Project</a></li>
-                  <li class="list-group-item"><a href="f8_admin">List Usulan</a></li>
+                  <li class="list-group-item"><a href="<?php echo site_url('c_ManageProject/viewPriority') ?>" >List Prioritas Project</a></li>
+                  <li class="list-group-item"><a href="<?php echo site_url('c_ManageProject/viewSatisfaction') ?>">List Kepuasan Project</a></li>
+                  <li class="list-group-item"><a href="<?php echo site_url('c_ManageProject/viewReport') ?>">List Report Project</a></li>
+                  <li class="list-group-item"><a href="<?php echo site_url('c_ManageProject/viewUsulan') ?>">List Usulan</a></li>
                 </ul>
               </div>
             </div>
@@ -78,7 +78,7 @@
               <div id="collapse3" class="panel-collapse collapse">
                 <ul class="list-group">
                   <li class="list-group-item"><a href="<?php echo site_url('c_ManageUser/viewAllUser') ?>">List Kependudukan</a></li>
-                  <li class="list-group-item"><a href="f10_admin">Input Kependudukan</a></li>
+                  <li class="list-group-item"><a href="<?php echo site_url('c_ManageUser/viewAddUser') ?>">Input Kependudukan</a></li>
                 </ul>
               </div>
             </div>
