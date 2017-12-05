@@ -22,9 +22,17 @@ class c_ManageProject extends CI_Controller {
 		$this->load->view('/admin/admin-halaman_project', $data);
 	}
 
+	public function viewSatisfaction(){
+		$this->load->view('/admin/admin-list_kepuasan');
+	}
+
 	public function voteSatisfaction(){
 		$id = $this->input->post('id_project');
 		$this->m_project->addSatisfaction($id);
+	}
+
+	public function viewPriority(){
+		$this->load->view('/admin/admin-list_prioritas');
 	}
 
 	public function votePriority(){
@@ -39,11 +47,19 @@ class c_ManageProject extends CI_Controller {
 		$this->m_project->addKomentar($id, $komentar, $username);
 	}
 
+	public function viewReport(){
+		$this->load->view('/admin/admin-list_report');
+	}
+
 	public function beriReport(){
 		$id = $this->input->post('id_project');
 		$report = $this->input->post('report');
 		$username = $this->session->user;
 		$this->m_project->addReport($id, $report, $username);
+	}
+
+	public function viewUsulan(){
+		$this->load->view('/admin/admin-list_usulan');
 	}
 
 	public function viewAddProject(){

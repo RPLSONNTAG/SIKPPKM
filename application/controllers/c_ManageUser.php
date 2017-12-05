@@ -42,6 +42,10 @@ class c_ManageUser extends CI_Controller {
 		redirect('c_ManageUser');
 	}
 
+	public function viewAddUser(){
+		$this->load->view('/admin/admin-input_kependudukan');
+	}
+
 	public function delUser($id){
 		$this->m_user->delUser($id);
 		redirect('c_ManageUser');
