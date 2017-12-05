@@ -15,17 +15,17 @@ class c_TestView extends CI_Controller {
 
 	public function home_admin()
 	{
-		$this->load->view('/admin/admin-home');
+		$this->load->view('admin-home.html');
 	}
 
 	public function f1_admin()
 	{
-		$this->load->view('/admin/admin-list_admin');
+		$this->load->view('admin-list_admin.html');
 	}
 
 	public function f2_admin()
 	{
-		$this->load->view('/admin/admin-input_admin');
+		$this->load->view('admin-input_admin.html');
 	}
 
 	public function f3_admin()
@@ -81,5 +81,55 @@ class c_TestView extends CI_Controller {
 	public function f13_admin()
 	{
 		$this->load->view('/admin/admin-halaman_usulan');
+	}
+
+	public function user_profile()
+	{
+		$this->load->view('user-profile.html');
+	}
+
+	public function user_report()
+	{
+		$this->load->view('user-reportprogress.html');
+	}
+
+	public function user_gantipassword()
+	{
+		$this->load->view('user-gantipassword.html');
+	}
+
+	public function user_halamanproject()
+	{
+		$this->load->view('user-halamanproject.html');
+	}
+
+	public function user_listusulan()
+	{
+		$this->load->view('user-listusulan.html');
+	}
+
+	public function user_login()
+	{
+		$this->load->view('user-login.html');
+	}
+
+	public function user_projectberjalan()
+	{
+		$this->load->view('user-projectberjalan.html');
+	}
+
+	public function user_projectselesai()
+	{
+		$this->load->view('user-projectselesai.html');
+	}
+
+	public function user_register()
+	{
+		$this->load->view('user-register.html');
+	}
+
+	public function user_usulanproject()
+	{
+		$this->load->view('user-usulanproject.html');
 	}
 }
