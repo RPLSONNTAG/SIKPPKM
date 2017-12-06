@@ -20,10 +20,12 @@
 					<li><a href="#">Project Berjalan</a></li>
 					<li><a href="#">Project Selesai</a></li>
 					<!--Usulan dan beri usulan untuk yg sudah login-->
-					<li><a href="#">Usulan</a></li>
+					<?php $name = $this->session->userdata('user'); if($name) { ?>
+          <li><a href="#">Usulan</a></li>
 					<li><a href="#">Beri Usulan</a></li>
 					<!---->
 				</ul>
+        <?php }; ?>
         <ul class="nav navbar-nav navbar-right">
           <!-- logout kalau ada session -->
           <li><a href="#">Login/Register</a></li>

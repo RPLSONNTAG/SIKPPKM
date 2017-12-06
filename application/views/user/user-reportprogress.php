@@ -4,9 +4,9 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<title>User - Upload Foto Progress</title>
-		<link href="<?php echo base_url() ?>assets/css/bootstrap.css" rel="stylesheet">
+		<link href="<?php echo base_url() ?>assets/css/bootstrap.min.css" rel="stylesheet">
 		<script src="<?php echo base_url() ?>assets/js/jquery.min.js"></script>
-		<script src="<?php echo base_url() ?>assets/js/bootstrap.min.js"></script>
+		<script src="<?php echo base_url() ?>assets/js/bootstrap.bundle.min.js"></script>
   </head>
   <body>
     <!--navbar-->
@@ -35,14 +35,18 @@
     <!--report progress user-->
 	<div class="container">
    <h2>Form Upload Foto Progress User</h2>
-    <form class="" action="" method="post">
+   <?php echo form_open_multipart('c_ManageProject/beriReport') ?>
+    
 		    <div class="form-group">
+		  <input class="form-control" type="text" name="id" value="<?php echo $id ?>">
+        </div>  
           <input class="form-control" type="file" name="foto_progress" value="">
         </div>
         <div class="">
           <button class="btn btn-default" name="uploadfoto">Upload</button>
         </div>
-    </form>
+    
+    <?php echo form_close() ?>
       <!--/report progress user-->
   </div>
   </body>

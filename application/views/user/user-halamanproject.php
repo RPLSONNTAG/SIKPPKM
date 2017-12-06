@@ -34,12 +34,13 @@
   </div>
   </nav>
   <!--/navbar-->
+  <?php $no=1; foreach ($proj as $row){ ?>
 	<div class="container">
     <div align="left">
-			<a href="uploadfoto" class="btn btn-default">Upload Foto Progress </a>
+			<a href="<?php echo site_url('c_ManageProject/viewReportProg/'.$row->ID_Project) ?>" class="btn btn-default">Upload Foto Progress </a>
     </div>
-		  <h1> Judul Project</h1>
-			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+		  <h1><?php echo $row->judul ?></h1>
+			<p><?php echo $row->isi ?></p>
     <div class="" align="left">
       <!-- kumpulan foto progress -->
       <!--slideshow-->
@@ -77,10 +78,11 @@
     </div>
 	  <div class="" align="left">
       <!-- upvote untuk project berjalan/ vote kepuasan untuk yg sudah selesai -->
-			<a href="" class="btn btn-default">Upvote</a>
+			<a href="<?php echo site_url('c_ManageProject/votePriority/'.$row->ID_Project) ?>" class="btn btn-default">Upvote</a>
       <!-- <a href="" class="btn btn-default">Satisfied</a> -->
       <!-- upvote untuk project berjalan/ vote kepuasan untuk yg sudah selesai -->
     </div>
+    <?php }; ?>
     <!-- form komentar -->
     <form class="" action="" method="post">
       <div class="form-group">

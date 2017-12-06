@@ -16,6 +16,10 @@ class c_ManageProject extends CI_Controller {
 		return $this->db->get('project');
 	}
 
+	public function getBlmSelesai(){
+		return $this->m_project->getBlmSelesai();
+	}
+
 	public function getProjectInfo($id){
 		$this->db->where('ID_Project', $id);
 		$data['proj'] = $this->getProjectList()->result();
@@ -35,9 +39,9 @@ class c_ManageProject extends CI_Controller {
 		$this->load->view('/admin/admin-list_prioritas');
 	}
 
-	public function votePriority(){
-		$id = $this->input->post('id_project');
+	public function votePriority($id){
 		$this->m_project->addPriority($id);
+		$this->berjalan();
 	}
 
 	public function beriKomentar(){
@@ -52,10 +56,33 @@ class c_ManageProject extends CI_Controller {
 	}
 
 	public function beriReport(){
-		$id = $this->input->post('id_project');
-		$report = $this->input->post('report');
-		$username = $this->session->user;
-		$this->m_project->addReport($id, $report, $username);
+		$config['upload_path']= './uploads/';
+		$config['allowed_types']= 'gif|jpg|png';
+		$config['max_size']= '100';
+		$config['max_width']= '1024';
+		$config['max_heiht']= '768';
+		$this->upload->initialize($config);
+
+		$id = $this->input->post('id');
+		$data['id'] = $id;
+		if($_FILES['foto_progress']['name']){
+			if($this->upload->do_upload('foto_progress')){
+				$img = $this->upload->data();
+				$report = $img['file_name'];
+				$username = $this->session->user;
+				$this->m_project->addReport($id, $report, $username);
+				echo "<script>alert('Berhasil Upload!')</script>";
+				$this->load->view('user/user-reportprogress', $data);
+			} else {
+				echo "<script>alert('Gagal Upload!')</script>";
+				$this->load->view('user/user-reportprogress', $data);
+			}
+		}
+	}
+
+	public function viewReportProg($id){
+		$data['id'] = $id;
+		$this->load->view('/user/user-reportprogress', $data);
 	}
 
 	public function viewUsulan(){
@@ -63,7 +90,8 @@ class c_ManageProject extends CI_Controller {
 	}
 
 	public function viewAddProject(){
-		$this->load->view('/admin/admin-input_project');
+		$data['jalan']=$this->getBlmSelesai()->result();
+		$this->load->view('/admin/admin-input_project', $data);
 	}
 	public function addProject(){
 		$id=$this->input->post('id_project');
@@ -79,15 +107,18 @@ class c_ManageProject extends CI_Controller {
 	}
 
 	public function berjalan(){
-		$this->load->view('/user/user-projectberjalan');
+		$data['blm']=$this->getBlmSelesai()->result();
+		$this->load->view('/user/user-projectberjalan', $data);
 	}
 
 	public function projectSelesai(){
 		$this->load->view('/user/user-projectselesai');
 	}
 
-	public function halamanProject(){
-		$this->load->view('/user/user-halamanproject');
+	public function halamanProject($id){
+		$this->db->where('ID_Project', $id);
+		$data['proj']=$this->getProjectList()->result();
+		$this->load->view('/user/user-halamanproject', $data);
 	}
 }
 /* End of file c_ManageProject.php */

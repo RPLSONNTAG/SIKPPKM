@@ -2,6 +2,10 @@
 
 class m_project extends CI_Model {
 
+	public function __construct(){
+
+	}
+
 	public function getInfo($id){
 		return $this->db->query("SELECT isi FROM Project where ID_Project='$id'");
 	}
@@ -14,7 +18,7 @@ class m_project extends CI_Model {
 		$tmp = $query->result();
 		$val = $tmp[0];
 		$satisfaction = $val->satisfaction;
-		$satisfaction +=1;
+		$satisfaction =$satisfaction+1;
 		//add vote
 		$query=$this->db->query("UPDATE project SET satisfaction=$satisfaction where ID_Project='$id'");
 	}
@@ -26,8 +30,8 @@ class m_project extends CI_Model {
 		$query = $this->db->get('project');
 		$tmp = $query->result();
 		$val = $tmp[0];
-		$priority = $val->vote;
-		$priority +=1;
+		$priority = $val->priority;
+		$priority = $priority+1;
 		//add priority
 		$query=$this->db->query("UPDATE project SET priority=$priority where ID_Project='$id'");
 	}
@@ -38,6 +42,10 @@ class m_project extends CI_Model {
 
 	public function addReport($id, $report, $user){
 		$query=$this->db->query("INSERT INTO report values('','$report','pending','$user','$id')");
+	}
+
+	public function getBlmSelesai(){
+		return $this->db->query('SELECT*FROM project where progress < 100');
 	}
 
 	public function getProgress(){}
