@@ -87,7 +87,7 @@
         </div>
         <!--/side menu-->
         <div class="col-sm-9">
-        <?php echo form_open('c_ManageProject/addProject'); ?>
+        <?php echo form_open('c_ManageProject/addProject') ?>
           <form class="" action="" method="post">
             <div class="form-group">
               <label for="id">ID Project</label>
@@ -105,7 +105,7 @@
               <button class="btn" name="submit">Submit</button>
             </div>
           </form>
-        <?php form_close(); ?>
+        <?php form_close() ?>
         </div>
       </div>
     </div>

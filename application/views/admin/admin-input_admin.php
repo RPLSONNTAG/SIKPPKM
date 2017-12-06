@@ -3,28 +3,28 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>Admin - Input Admin</title>
-		<link href="<?php echo base_url() ?>assets/css/bootstrap.css" rel="stylesheet">
+    <title>Admin - Home</title>
+    <link href="<?php echo base_url() ?>assets/css/bootstrap.min.css" rel="stylesheet">
     <link href="<?php echo base_url() ?>assets/css/master.css" rel="stylesheet">
-		<script src="<?php echo base_url() ?>assets/js/jquery.min.js"></script>
-		<script src="<?php echo base_url() ?>assets/js/bootstrap.min.js"></script>
+    <script src="<?php echo base_url() ?>assets/js/jquery.min.js"></script>
+    <script src="<?php echo base_url() ?>assets/js/bootstrap.bundle.min.js"></script>
   </head>
   <body>
     <!--navbar-->
-		<nav class="navbar navbar-default">
+    <nav class="navbar navbar-default">
     <div class="container-fluid">
-      <div class="navbar-header"><a href="#" class="navbar-brand navbar-link">SIKPPKM</a>
+      <div class="navbar-header"><a href="<?php echo site_url('c_auth/home') ?>" class="navbar-brand navbar-link">SIKPPKM</a>
         <button data-toggle="collapse" data-target="#navcol-1" class="navbar-toggle collapsed"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
       </div>
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="#">Logout</a></li>
+        <li><a href="<?php echo site_url('c_auth/logout') ?>">Logout</a></li>
       </ul>
     </div>
     </nav>
-		<!--/navbar-->
+    <!--/navbar-->
     <div class="container">
       <div class="" align="center">
-        <h2>Input Admin</h2>
+        <h2>Home Admin</h2>
       </div>
       <div class="row">
         <!--side menu-->
@@ -39,8 +39,8 @@
               </div>
               <div id="collapse1" class="panel-collapse collapse">
                 <ul class="list-group">
-                  <li class="list-group-item"><a href="f1_admin">List Admin</a></li>
-                  <li class="list-group-item"><a href="f2_admin">Input Admin</a></li>
+                  <li class="list-group-item"><a href="<?php echo site_url('c_ManageUser') ?>">List Admin</a></li>
+                  <li class="list-group-item"><a href="<?php echo site_url('c_ManageUser/viewAddAdmin') ?>">Input Admin</a></li>
                 </ul>
               </div>
             </div>
@@ -56,12 +56,12 @@
               </div>
               <div id="collapse2" class="panel-collapse collapse">
                 <ul class="list-group">
-                  <li class="list-group-item"><a href="f3_admin">List Project</a></li>
-                  <li class="list-group-item"><a href="f4_admin">Input Project</a></li>
-                  <li class="list-group-item"><a href="f5_admin">List Prioritas Project</a></li>
-                  <li class="list-group-item"><a href="f6_admin">List Kepuasan Project</a></li>
-                  <li class="list-group-item"><a href="f7_admin">List Report Project</a></li>
-                  <li class="list-group-item"><a href="f8_admin">List Usulan</a></li>
+                  <li class="list-group-item"><a href="<?php echo site_url('c_ManageProject') ?>">List Project</a></li>
+                  <li class="list-group-item"><a href="<?php echo site_url('c_ManageProject/viewAddProject') ?>">Input Project</a></li>
+                  <li class="list-group-item"><a href="<?php echo site_url('c_ManageProject/viewPriority') ?>" >List Prioritas Project</a></li>
+                  <li class="list-group-item"><a href="<?php echo site_url('c_ManageProject/viewSatisfaction') ?>">List Kepuasan Project</a></li>
+                  <li class="list-group-item"><a href="<?php echo site_url('c_ManageProject/viewReport') ?>">List Report Project</a></li>
+                  <li class="list-group-item"><a href="<?php echo site_url('c_ManageProject/viewUsulan') ?>">List Usulan</a></li>
                 </ul>
               </div>
             </div>
@@ -77,8 +77,8 @@
               </div>
               <div id="collapse3" class="panel-collapse collapse">
                 <ul class="list-group">
-                  <li class="list-group-item"><a href="f9_admin">List Kependudukan</a></li>
-                  <li class="list-group-item"><a href="f10_admin">Input Kependudukan</a></li>
+                  <li class="list-group-item"><a href="<?php echo site_url('c_ManageUser/viewAllUser') ?>">List Kependudukan</a></li>
+                  <li class="list-group-item"><a href="<?php echo site_url('c_ManageUser/viewAddUser') ?>">Input Kependudukan</a></li>
                 </ul>
               </div>
             </div>

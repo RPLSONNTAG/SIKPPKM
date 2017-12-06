@@ -27,7 +27,8 @@ class c_ManageProject extends CI_Controller {
 	}
 
 	public function viewSatisfaction(){
-		$this->load->view('/admin/admin-list_kepuasan');
+		$data['proj'] = $this->getProjectList()->result();
+		$this->load->view('/admin/admin-list_kepuasan', $data);
 	}
 
 	public function voteSatisfaction(){
@@ -36,7 +37,8 @@ class c_ManageProject extends CI_Controller {
 	}
 
 	public function viewPriority(){
-		$this->load->view('/admin/admin-list_prioritas');
+		$data['proj'] = $this->getProjectList()->result();
+		$this->load->view('/admin/admin-list_prioritas', $data);
 	}
 
 	public function votePriority($id){
@@ -52,7 +54,8 @@ class c_ManageProject extends CI_Controller {
 	}
 
 	public function viewReport(){
-		$this->load->view('/admin/admin-list_report');
+		$data['proj'] = $this->db->get('report')->result();		
+		$this->load->view('/admin/admin-list_report', $data);
 	}
 
 	public function beriReport(){
@@ -97,7 +100,7 @@ class c_ManageProject extends CI_Controller {
 		$id=$this->input->post('id_project');
 		$judul=$this->input->post('judul');
 		$isi=$this->input->post('isi');
-		$this->m_project->newProject($username, $password);
+		$this->m_project->newProject($id, $judul, $isi);
 		redirect('c_ManageProject');
 	}
 

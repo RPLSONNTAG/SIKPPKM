@@ -102,10 +102,12 @@
                   </colgroup>
                 <tbody>
                   <!--perulangan sql disini-->
+                  <?php $no=1; foreach ($proj as $row){ ?>
                   <tr>
-                    <td>Kepuasan proj</td>
-                    <td><a href="f11_admin">Judul-------</a></td>
+                    <td><?php echo $row->satisfaction ?></td>
+                    <td><a href="f11_admin"><?php echo $row->judul?></a></td>
                   </tr>
+                  <?php } ?>
                   <!--/perulangan sql disini-->
                 </tbody>
               </table>
