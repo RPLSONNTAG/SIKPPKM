@@ -32,6 +32,14 @@ class m_user extends CI_Model {
 		}
 	}
 
+	public function data($username, $password){
+		$where = array(
+						'username' => $username,
+						'password' => $password
+				);
+		return $this->db->get_where('user', $where)->result();
+	}
+
 	public function setPassword($username ,$password){
 		$query=$this->db->query("UPDATE user SET password='$password' where username='$username'");
 	}

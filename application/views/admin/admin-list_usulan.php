@@ -102,10 +102,12 @@
                   </colgroup>
                 <tbody>
                   <!--perulangan sql disini-->
+                  <?php foreach ($usul as $row) { ?>
                   <tr>
-                    <td>Hasil Vote</td>
-                    <td><a href="f13_admin">Judul-------</a></td>
+                    <td><?php echo $row->vote ?></td>
+                    <td><a href="<?php echo site_url('c_ManageProject/viewPageUsulan/'.$row->id_usulan) ?>"><?php echo $row->judul ?></a></td>
                   </tr>
+                  <?php }?>
                   <!--/perulangan sql disini-->
                 </tbody>
               </table>

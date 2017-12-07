@@ -31,9 +31,9 @@ class c_ManageProject extends CI_Controller {
 		$this->load->view('/admin/admin-list_kepuasan', $data);
 	}
 
-	public function voteSatisfaction(){
-		$id = $this->input->post('id_project');
+	public function voteSatisfaction($id){
 		$this->m_project->addSatisfaction($id);
+		$this->projectSelesai($id);
 	}
 
 	public function viewPriority(){
@@ -89,13 +89,21 @@ class c_ManageProject extends CI_Controller {
 	}
 
 	public function viewUsulan(){
-		$this->load->view('/admin/admin-list_usulan');
+		$data['usul']=$this->db->get('usulan')->result();
+		$this->load->view('/admin/admin-list_usulan', $data);
 	}
 
 	public function viewAddProject(){
 		$data['jalan']=$this->getBlmSelesai()->result();
 		$this->load->view('/admin/admin-input_project', $data);
 	}
+
+	public function viewPageUsulan($id){
+		$this->db->where('id_usulan', $id);
+		$data['usul']=$this->db->get('usulan')->result();
+		$this->load->view('/admin/admin-halaman_usulan', $data);
+	}
+
 	public function addProject(){
 		$id=$this->input->post('id_project');
 		$judul=$this->input->post('judul');
@@ -115,7 +123,8 @@ class c_ManageProject extends CI_Controller {
 	}
 
 	public function projectSelesai(){
-		$this->load->view('/user/user-projectselesai');
+		$data['selesai']=$this->m_project->getSelesai()->result();
+		$this->load->view('/user/user-projectselesai', $data);
 	}
 
 	public function halamanProject($id){

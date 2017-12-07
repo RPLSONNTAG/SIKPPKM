@@ -105,7 +105,9 @@
                   <?php $no=1; foreach ($proj as $row){ ?>
                   <tr>
                     <td><?php echo $row->ID_report ?></td>
-                    <td><a href="f12_admin"><?php echo $row->ID_project ?></a></td>
+                    <td><a href="<?php echo site_url('c_ManageProject/getProjectInfo/'.$row->ID_project) ?>"><?php echo $row->ID_project ?></a></td>
+                      <td>
+                      </td>
                   </tr>
                   <?php } ?>
                   <!--/perulangan sql disini-->

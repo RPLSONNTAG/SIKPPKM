@@ -13,7 +13,7 @@
     <!--navbar-->
 		<nav class="navbar navbar-default">
     <div class="container-fluid">
-      <div class="navbar-header"><a href="#" class="navbar-brand navbar-link">SIKPPKM</a>
+      <div class="navbar-header"><a href="<?php echo site_url('c_auth/uHome') ?>" class="navbar-brand navbar-link">SIKPPKM</a>
         <button data-toggle="collapse" data-target="#navcol-1" class="navbar-toggle collapsed"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
       </div>
       <div class="collapse navbar-collapse" id="navcol-1">
@@ -21,8 +21,8 @@
 					<li><a href="<?php echo site_url('c_ManageProject/berjalan') ?>">Project Berjalan</a></li>
 					<li><a href="<?php echo site_url('c_ManageProject/projectSelesai') ?>">Project Selesai</a></li>
 					<!--Usulan dan beri usulan untuk yg sudah login-->
-					<li><a href="#">Usulan</a></li>
-					<li><a href="#">Beri Usulan</a></li>
+					<li><a href="<?php echo site_url('c_usulan/viewUsulan') ?>">Usulan</a></li>
+					<li><a href="<?php echo site_url('c_usulan/viewAdd') ?>">Beri Usulan</a></li>
 					<!---->
 				</ul>
         <?php $name = $this->session->userdata('user'); if($name) { ?>
@@ -52,10 +52,13 @@
         </div>
         <div class="col-sm-9">
           <!-- data user - database -->
-          <h3>Username</h3>
-          <p><span class="glyphicon glyphicon-globe"></span> NIK</p>
-          <p><span class="glyphicon glyphicon-envelope"></span> alamat email</p>
-          <p><span class="glyphicon glyphicon-earphone"></span> nomor telp</p>
+          <?php $no=1; foreach ($user as $row) { ?>
+          
+          <h3><?php echo $row->username ?></h3>
+          <p><span class="glyphicon glyphicon-globe"></span> <?php echo $row->NIK ?></p>
+          <p><span class="glyphicon glyphicon-envelope"></span> <?php echo $row->email ?></p>
+          <p><span class="glyphicon glyphicon-earphone"></span> <?php echo $row->noTelp ?></p>
+          <?php } ?>
           <!-- ganti Password -->
           <a href="<?php echo site_url('c_auth/viewGPassword') ?>" class="btn btn-default">Ganti Password</a>
           <!-- ganti Password -->

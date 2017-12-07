@@ -52,7 +52,7 @@
         </div>
       </form>
       <div class="" style="margin-top: 10px;">
-        <p>Belum daftar? <a href="#">Daftar sekarang</a></p>
+        <p>Belum daftar? <a href="<?php echo site_url('c_auth/regUser') ?>">Daftar sekarang</a></p>
       </div>
     <?php echo form_close() ?>
       <!--/form login-->

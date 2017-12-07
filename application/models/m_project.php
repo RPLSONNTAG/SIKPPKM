@@ -48,6 +48,10 @@ class m_project extends CI_Model {
 		return $this->db->query('SELECT*FROM project where progress < 100');
 	}
 
+	public function getSelesai(){
+		return $this->db->query('SELECT*FROM project where progress = 100');
+	}
+
 	public function getProgress(){}
 	
 	public function newProject($id, $judul, $isi){

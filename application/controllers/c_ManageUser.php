@@ -42,6 +42,16 @@ class c_ManageUser extends CI_Controller {
 		redirect('c_ManageUser');
 	}
 
+	public function regUser(){
+		$username=$this->input->post('username');
+		$NIK=$this->input->post('NIK');
+		$email=$this->input->post('email');
+		$noTelp=$this->input->post('noTelp');
+		$password=$this->input->post('password');
+		$this->m_user->addUser($username, $password, $email, $noTelp, $NIK);
+		redirect('c_auth');
+	}
+
 	public function viewAddUser(){
 		$this->load->view('/admin/admin-input_kependudukan');
 	}
