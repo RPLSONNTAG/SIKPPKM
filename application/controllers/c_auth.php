@@ -15,13 +15,15 @@ class c_auth extends CI_Controller {
 	public function home(){
 		$this->load->view('/admin/admin-home');
 	}
-	
+
 	public function uHome(){
 		$username=$this->session->userdata('user');
 		$this->db->where('username', $username);
 		$data['user']=$this->db->get('user')->result();
 		$this->load->view('/user/user-profile', $data);
 	}
+
+
 
 	public function viewLogUser(){
 		$this->load->view('/user/user-login');
@@ -50,13 +52,12 @@ class c_auth extends CI_Controller {
 		if($this->m_user->isValid($username, $password)){
 			//echo "Berhasil!";
 			$this->session->set_userdata('user', $username);
-			$data['user']=$this->m_user->data($username, $password);
 			echo "<script>alert('Sukses!')</script>";
-			$this->load->view('/user/user-profile', $data);
+			redirect('c_ManageProject/halamanUtama');
 		} else {
 			//echo "Username Salah";
 			$this->session->set_flashdata('error','Maaf Anda Gagal Login ');
-			redirect('c_auth');
+			redirect('c_auth/loginUser');
 		}
 	}
 

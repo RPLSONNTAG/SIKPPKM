@@ -52,8 +52,16 @@ class m_project extends CI_Model {
 		return $this->db->query('SELECT*FROM project where progress = 100');
 	}
 
-	public function getProgress(){}
-	
+	public function getLimBlmSelesai($lim){
+		return $this->db->query("SELECT * FROM project where progress < 100 LIMIT $lim");
+	}
+
+	public function getLimSelesai($lim){
+		return $this->db->query("SELECT * FROM project where progress = 100 LIMIT $lim");
+	}
+
+	public function getProgress1(){}
+
 	public function newProject($id, $judul, $isi){
 		$query=$this->db->query("INSERT INTO project values('$id','$judul','$isi',0,0,0)");
 	}

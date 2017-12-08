@@ -54,7 +54,7 @@ class c_ManageProject extends CI_Controller {
 	}
 
 	public function viewReport(){
-		$data['proj'] = $this->db->get('report')->result();		
+		$data['proj'] = $this->db->get('report')->result();
 		$this->load->view('/admin/admin-list_report', $data);
 	}
 
@@ -131,6 +131,12 @@ class c_ManageProject extends CI_Controller {
 		$this->db->where('ID_Project', $id);
 		$data['proj']=$this->getProjectList()->result();
 		$this->load->view('/user/user-halamanproject', $data);
+	}
+
+	public function halamanUtama(){
+		$data['berjalan']=$this->m_project->getLimBlmSelesai(5);
+		$data['selesai']=$this->m_project->getLimSelesai(5);
+		$this->load->view('/user/index', $data);
 	}
 }
 /* End of file c_ManageProject.php */

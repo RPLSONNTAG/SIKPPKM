@@ -1,9 +1,9 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 class m_user extends CI_Model {
-	
+
 	public function __construct(){
-		
+
 	}
 
 	public function isValid($username, $password){
@@ -26,6 +26,18 @@ class m_user extends CI_Model {
 				 	  );
 		$dataR = $this->db->get_where('user', $where)->num_rows();
 		if($dataR>0){
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+	Public function isPenduduk($nik){
+		$where = array(
+						'nik' => $nik
+				 	  );
+		$dataR= $this->db->get_where('kependudukan', $where)->num_rows();
+		if ($dataR>0) {
 			return true;
 		} else {
 			return false;

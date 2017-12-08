@@ -22,7 +22,7 @@ class c_ManageUser extends CI_Controller {
 	}
 
 	public function getAllUser(){
-		$data['user'] = $this->db->get('user')->result();
+		$data['user'] = $this->db->get('kependudukan')->result();
 		$this->load->view('/admin/admin-list_kependudukan', $data);
 	}
 
@@ -48,8 +48,15 @@ class c_ManageUser extends CI_Controller {
 		$email=$this->input->post('email');
 		$noTelp=$this->input->post('noTelp');
 		$password=$this->input->post('password');
-		$this->m_user->addUser($username, $password, $email, $noTelp, $NIK);
-		redirect('c_auth');
+		if ($this->m_user->isPenduduk($NIK)) {
+			$this->m_user->addUser($username, $password, $email, $noTelp, $NIK);
+			echo "<script>alert('Sukses!')</script>";
+			redirect('c_auth/viewLogUser');
+		} else {
+			echo "<script>alert('Gagal','NIK belum terdaftar')</script>";
+			redirect('c_auth/regUser');
+		}
+
 	}
 
 	public function viewAddUser(){
